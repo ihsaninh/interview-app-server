@@ -36,8 +36,14 @@ class User extends Model {
     return this.hasMany('App/Models/Token')
   }
 
-  answers () {
-    return this.hasMany('App/Models/Answer')
+  // answers () {
+  //   return this.hasMany('App/Models/Answer')
+  // }
+
+  questions() {
+    return this.belongsToMany('App/Models/Question')
+               .pivotTable('answers')
+               .withPivot(['answer', 'attachment'])
   }
 
 }

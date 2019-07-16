@@ -4,8 +4,11 @@
 const Model = use('Model')
 
 class Question extends Model {
-    answers () {
-        return this.hasMany('App/Models/Answer')
+    // answers () {
+    //     return this.hasMany('App/Models/Answer')
+    // }
+    users() {
+    	return this.belongsToMany('App/Models/User').pivotTable('answers')
     }
 }
 
